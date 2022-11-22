@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - JavaScript animation with setInterval</title>
+    <style>
+        #box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            background-color: #1F1B24;
+        }
+
+        #box1 {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            background-color: #1F1B24;
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <h1>JavaScript animation with setInterval()</h1>
+    <p>
+        <label>Choose de "frame rate" from the list:</label>
+        <select id="frameRate">
+            <option value="5">5 fps</option>
+            <option value="15">15 fps</option>
+            <option value="24" selected>24 fps</option>
+            <option value="40">40 fps</option>
+            <option value="60">60 fps</option>
+        </select>
+    </p>
+    <p>
+        <label>Choose the distance covered in every frame:</label>
+        <select id="distance">
+            <option value="1">1px</option>
+            <option value="5" selected>5px</option>
+            <option value="10">10px</option>
+            <option value="25">25px</option>
+            <option value="50">50px</option>
+        </select>
+    </p>
+    <div id="box"></div>
+
+    <div id="box1"></div>
+    <script>
+        var box = document.querySelector("#box");
+        var frameRate = document.querySelector("#frameRate");
+        var distance = document.querySelector("#distance");
+        var int;
+
+        var box1 = document.querySelector("#box1");
+        var frameRate = document.querySelector("#frameRate");
+        var distance = document.querySelector("#distance");
+        var int;
+
+        function animate() {
+            var margin = 0;
+            int = setInterval(function () {
+                    margin = (margin > window.innerWidth ? 0 : margin + Number(distance.value));
+                    box.style.marginLeft = margin + "px";
+                },
+                1000 / Number(frameRate.value))
+        }
+
+        function reset() {
+            clearInterval(int);
+            animate();
+        }
+
+        animate();
+
+        frameRate.EventListener("change", reset);
+        distance.EvenetListener("change", reset);
+
+        function animate() {
+            var margin = 0;
+            int = setInterval(function () {
+                    margin = (margin > window.innerWidth ? 0 : margin + Number(distance.value));
+                    box1.style.marginLeft = margin + "px";
+                },
+                1000 / Number(frameRate.value))
+        }
+
+        function reset() {
+            clearInterval(int);
+            animate();
+        }
+
+        animate();
+
+        frameRate.EventListener("change", reset);
+        distance.EvenetListener("change", reset);
+    </script>
+</body>
+
+</html>
